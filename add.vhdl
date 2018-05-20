@@ -6,7 +6,7 @@ entity add is
 		sub	: in std_logic;
 		A 	: in std_logic_vector (7 downto 0);
 		B	: in std_logic_vector (7 downto 0);
-		Sum	: out std_logic_vector (7 downto 0);
+		Sum	: out std_logic_vector (7 downto 0) <= "XXXXXXXX";
 		overflow	: out std_logic
 	);
 
@@ -24,14 +24,14 @@ architecture behavior of add is
 		);
 	end component;
 
-	signal sum_full_adder : std_logic_vector (7 downto 0);
-	signal carry_out : std_logic_vector (7 downto 0);
+	signal sum_full_adder : std_logic_vector (7 downto 0) := "XXXXXXXX";
+	signal carry_out : std_logic_vector (7 downto 0) := "XXXXXXXX";
 
 begin
 
 	overflow <= carry_out(7) xor carry_out(6);
 
-	loop : for i in 0 to 7 generate
+	a_loop : for i in 0 to 7 generate
 
 		sum_full_adder(i) <= B(i) xor sub;
  
@@ -55,7 +55,7 @@ begin
 					Carry_Out => carry_out(i)
 				);
 		end generate rest_full_adder;
-	end generate loop;
+	end generate a_loop;
 end behavior;
 
 

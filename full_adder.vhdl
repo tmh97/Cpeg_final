@@ -23,9 +23,9 @@ architecture behavior of full_adder is
 		);
 	end component;
 
-	signal sum : std_logic;
-	signal carry_0 : std_logic;
-	signal carry_1 : std_logic;
+	signal sum : std_logic := 'X';
+	signal carry_0 : std_logic := 'X';
+	signal carry_1 : std_logic := 'X';
 
 begin
 
