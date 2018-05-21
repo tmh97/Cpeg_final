@@ -36,7 +36,7 @@ begin
 		sum_full_adder(i) <= B(i) xor sub;
  
 		first_full_adder: if i = 0 generate
-			full_adder0: full_ader
+			full_adder0: full_adder
 				port_map(
 					A => A(i),
 					B => sum_full_adder(i),

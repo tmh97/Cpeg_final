@@ -19,6 +19,7 @@ entity decode_to_execute is
 		rd2_in	: in std_logic_vector(7 downto 0);
 		rs_in	: in std_logic_vector(1 downto 0);
 		rd_in	: in std_logic_vector(1 downto 0);
+		extended_in : in std_logic_vector(7 downto 0);
 		
 		regDst_out	: out std_logic := 'X';
 		branch_out	: out std_logic := '0';
@@ -30,7 +31,8 @@ entity decode_to_execute is
 		rd1_out	: out std_logic_vector(7 downto 0) := "XXXXXXXX";
 		rd2_out	: out std_logic_vector(7 downto 0) := "XXXXXXXX";
 		rs_out	: out std_logic_vector(1 downto 0) := "XXX";
-		rd_out	: out std_logic_vector(1 downto 0) := "XXX"
+		rd_out	: out std_logic_vector(1 downto 0) := "XXX",
+		extended_out : out std_logic_vector(7 downto 0) := "XXXXXXXX"
 	);
 end decode_to_execute;
 
@@ -48,7 +50,8 @@ begin
 			rd1_out	<= "XXXXXXXX";
 			rd2_out <= "XXXXXXXX";
 			rs_out <= "XX";
-			rd_out <= "XX";		
+			rd_out <= "XX";	
+			extended_out <= "XXXXXXXX";	
 		elsif enable = '1' and rising_edge(CLK) then
 			regDst_out    <= regDst_in;
 			branch_out   <= branch_in;
@@ -60,7 +63,7 @@ begin
 			rd2_out <=  rd2_in;
 			rs_out <= rs_in;
 			rd_out <= rd_in;
-			
+			extended_out <= extended_in;	
 		end if;
 	end process;
 end behavior;

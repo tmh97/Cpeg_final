@@ -3,19 +3,16 @@ use ieee.std_logic_1164.all;
 
 entity register_file is 
 	port(
-		-- Control Signals
 		CLK	: in std_logic;
 		enable	: in  std_logic := '0';
 		reset	: in  std_logic := '1';
 		regWrite	: in  std_logic := '0';
-		
-		-- Inputs
+
 		rr1	: in  std_logic_vector (1 downto 0);
 		rr2	: in  std_logic_vector (1 downto 0);
 		wr	: in  std_logic_vector (1 downto 0);
 		wd	: in  std_logic_vector (7 downto 0);
 		
-		-- Outputs
 		rd1	: out std_logic_vector (7 downto 0) := "XXXXXXXX";
 		rd2	: out std_logic_vector (7 downto 0) := "XXXXXXXX"
 	);
