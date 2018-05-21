@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity calculator is
 	port(
@@ -424,6 +425,8 @@ architecture behavior of calculator is
 	decode_imm <= decode_instruction(3 downto 0);
 
 	process(CLK, enable, reset) is
+	variable ival1 : integer;
+	variable ival2 : integer;
 	begin
 		if reset = '1' then
 			decode_clk <= '0';
@@ -453,7 +456,9 @@ architecture behavior of calculator is
 				decode_clk <= '0';
 				flush <= '0';
 				if enable_signal ='1' then
-				-- print
+					ival1 := to_integer(signed(pc_signal));
+					ival2 := to_integer(signed(decode_instruction));
+					report "   " & integer'image(ival1)& "   " &integer'image(ival2) severity note;
 				end if;
 			end if;
 		end if;
