@@ -1,4 +1,4 @@
-GHDL        = ghdl
+GHDL	= ghdl
 
 #######################################
 calculator: add2bit add comparator mux2bit mux extender control_unit register_file alu fetch_to_decode decode_to_execute execute_to_writeback calculator.vhdl calculator_tb.vhdl
@@ -50,4 +50,4 @@ execute_to_writeback: $execute_to_writeback.vhdl
 	$(GHDL) -a execute_to_writeback.vhdl
 
 clean:
-rm -f *.o *.cf *_tb *.out
+	rm -f *.o *.cf *_tb *.out
